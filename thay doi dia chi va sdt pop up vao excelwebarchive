@@ -1,0 +1,192 @@
+bplist00Ñ_WebMainResourceÕ	
+_WebResourceTextEncodingName^WebResourceURL_WebResourceFrameName_WebResourceData_WebResourceMIMETypeUUTF-8_@https://raw.githack.com/mrtodesigner/hvbw/master/faceseo-form.jsPO#ª<html><head></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">(function(JQuery) {
+    JQuery.fn.thanhfaceseo = function(options) {        
+        var defaults = {  
+	    	animation: 'fadeAndPop', //fade, fadeAndPop, none
+		    animationspeed: 300, //how fast animtions are
+		    closeonbackgroundclick: true, //if you click background will modal close?
+		    dismissmodalclass: 'close-thanhfaceseo-modal' //the class of a button or element that will close an open modal
+    	}; 
+
+        var options = JQuery.extend({}, defaults, options); 
+	
+        return this.each(function() {
+        	var modal = JQuery(this),
+        		topMeasure  = parseInt(modal.css('top')),
+				topOffset = modal.height() + topMeasure,
+          		locked = false,
+				modalBG = JQuery('.thanhfaceseo-modal-bg');
+
+			if(modalBG.length == 0) {
+				modalBG = JQuery('&lt;div class="thanhfaceseo-modal-bg" /&gt;').insertAfter(modal);
+			}		    
+			modal.bind('thanhfaceseo:open', function () {
+			  modalBG.unbind('click.modalEvent');
+				JQuery('.' + options.dismissmodalclass).unbind('click.modalEvent');
+				if(!locked) {
+					lockModal();
+					if(options.animation == "fadeAndPop") {
+						modal.css({'top': JQuery(document).scrollTop()-topOffset, 'opacity' : 0, 'visibility' : 'visible'});
+						modalBG.fadeIn(options.animationspeed/2);
+						modal.delay(options.animationspeed/2).animate({
+							"top": JQuery(document).scrollTop()+topMeasure + 'px',
+							"opacity" : 1
+						}, options.animationspeed,unlockModal());					
+					}
+					if(options.animation == "fade") {
+						modal.css({'opacity' : 0, 'visibility' : 'visible', 'top': JQuery(document).scrollTop()+topMeasure});
+						modalBG.fadeIn(options.animationspeed/2);
+						modal.delay(options.animationspeed/2).animate({
+							"opacity" : 1
+						}, options.animationspeed,unlockModal());					
+					} 
+					if(options.animation == "none") {
+						modal.css({'visibility' : 'visible', 'top':JQuery(document).scrollTop()+topMeasure});
+						modalBG.css({"display":"block"});	
+						unlockModal()				
+					}
+				}
+				modal.unbind('thanhfaceseo:open');
+			}); 	
+
+			modal.bind('thanhfaceseo:close', function () {
+			  if(!locked) {
+					lockModal();
+					if(options.animation == "fadeAndPop") {
+						modalBG.delay(options.animationspeed).fadeOut(options.animationspeed);
+						modal.animate({
+							"top":  JQuery(document).scrollTop()-topOffset + 'px',
+							"opacity" : 0
+						}, 0, function() {
+							modal.css({'top':topMeasure, 'opacity' : 1, 'visibility' : 'hidden'});
+							unlockModal();
+						});					
+					}  	
+					if(options.animation == "fade") {
+						modalBG.delay(options.animationspeed).fadeOut(options.animationspeed);
+						modal.animate({
+							"opacity" : 0
+						}, 0, function() {
+							modal.css({'opacity' : 1, 'visibility' : 'hidden', 'top' : topMeasure});
+							unlockModal();
+						});					
+					}  	
+					if(options.animation == "none") {
+						modal.css({'visibility' : 'hidden', 'top' : topMeasure});
+						modalBG.css({'display' : 'none'});	
+					}		
+				}
+				modal.unbind('thanhfaceseo:close');
+			});     
+   	
+    	modal.trigger('thanhfaceseo:open')
+			
+			//Close Modal Listeners
+			var closeButton = JQuery('.' + options.dismissmodalclass).bind('click.modalEvent', function () {
+			  modal.trigger('thanhfaceseo:close')
+			});
+			
+			if(options.closeonbackgroundclick) {
+				modalBG.css({"cursor":"pointer"})
+				modalBG.bind('click.modalEvent', function () {
+				  modal.trigger('thanhfaceseo:close')
+				});
+			}
+			JQuery('body').keyup(function(e) {
+        		if(e.which===27){ modal.trigger('thanhfaceseo:close'); } // 27 is the keycode for the Escape key
+			});
+			
+			function unlockModal() { 
+				locked = false;
+			}
+			function lockModal() {
+				locked = true;
+			}	
+			
+        });//each call
+    }//orbit plugin call
+})(jQuery);
+        
+var divpopup = document.createElement("div");
+jQuery(divpopup).attr('id', 'myModalthanh');
+jQuery(divpopup).attr('class', 'thanhfaceseo-modal');
+jQuery( "body" ).append(divpopup);
+var titleform='ÄÄƒng kÃ½ Form';
+var urlform="https://docs.google.com/forms/d/e/1FAIpQLScWvMIVZjxGQY4PIokHXh20dB9rFHNyYdC_E3dArnJ7uPzMOw/formResponse";
+var urlchuyen=window.location.href;
+var hovaten="417205409";
+var dienthoai="386165074";
+var email="1294822629";
+var duan="1247784825";
+var submittitle='ÄÄƒng kÃ½ tÆ° váº¥n';
+var submittedform=false;
+var titleheader="ÄÄ‚NG KÃ TÆ¯ Váº¤N NHáº¬N Æ¯U ÄÃƒI";
+var hotline="0961011418";
+var linkhientai=window.location.href;
+var thoigianhien=30000;
+var formdiv='&lt;div class="popup-body"&gt;&lt;iframe id="hidden_iframethanh" name="hidden_iframethanh" onload="thanhxet()" style="display:none;"&gt;&lt;/iframe&gt;&lt;div class="box-thanh-form"&gt;&lt;div class="img"&gt;&lt;/div&gt;&lt;div class="thanhform-level1"&gt;&lt;h2&gt;&lt;a class="close-thanhfaceseo-modal"&gt;X&lt;/a&gt;&lt;/h2&gt;&lt;/div&gt;&lt;div id="cems-subscription" class="cems-subscription"&gt;&lt;div class="sss-form-content thanhgform_wrapper"&gt; &lt;form class="form-hasBg" onsubmit="submittedform=true;" target="hidden_iframethanh" method="post" action="'+urlform+'"&gt;&lt;div class="gform_body"&gt;&lt;h2 class="form-title yellow-text-gradient"&gt;'+titleheader+'&lt;/h2&gt;&lt;div class="description"&gt;					&lt;p&gt;Vui lÃ²ng Ä‘iá»n chÃ­nh xÃ¡c cÃ¡c thÃ´ng tin bÃªn dÆ°á»›i Ä‘á»ƒ nháº­n tÃ i liá»‡u cá»§a dá»± Ã¡n&lt;/p&gt;				&lt;/div&gt;     &lt;ul class="thanhtop_label"&gt; ';
+formdiv+= '&lt;li class="sss-form-control gfield "&gt;  &lt;div class="sss-form-control-inner"&gt;                               &lt;div class="ginput_container"&gt;                  &lt;input class="medium" name="entry.'+hovaten+'" maxlength="70" id="your_name" placeholder="Há» tÃªn" value="" type="text"&gt;                &lt;/div&gt;              &lt;/div&gt;            &lt;/li&gt; ';
+formdiv+= '&lt;li class="sss-form-control gfield "&gt;              &lt;div class="sss-form-control-inner"&gt;                              &lt;div class="ginput_container"&gt;                  &lt;input class="medium" name="entry.'+email+'" maxlength="320" id="email_addr" placeholder="Email" value="" type="email"/&gt;                &lt;/div&gt;              &lt;/div&gt;            &lt;/li&gt; ';
+formdiv+= ' &lt;li class="sss-form-control gfield "&gt;              &lt;div class="sss-form-control-inner"&gt;                                &lt;div class="ginput_container"&gt;                  &lt;input class="medium" name="entry.'+dienthoai+'" maxlength="15" id="your_phone" placeholder="Sá»‘ Ä‘iá»‡n thoáº¡i" value="" length="11" type="tel"/&gt;                &lt;/div&gt;              &lt;/div&gt;            &lt;/li&gt;';
+
+formdiv+= ' &lt;li class="sss-form-control gfield thanhan"&gt;              &lt;div class="sss-form-control-inner"&gt;                                &lt;div class="ginput_container"&gt;                  &lt;input class="medium" name="entry.'+duan+'" maxlength="15" id="your_phone" placeholder="Dá»± Ã¡n" value="'+linkhientai+'" length="11" type="tel"/&gt;                &lt;/div&gt;              &lt;/div&gt;            &lt;/li&gt;';
+
+
+formdiv+= '&lt;/ul&gt;        &lt;/div&gt;        &lt;div class="gform_footer"&gt;          &lt;div class="sss-form-control last" style="text-align:center;"&gt;            &lt;input value="'+submittitle+'" type="submit"/&gt;          &lt;/div&gt; &lt;span style="display:inline-block"&gt;HOTLINE:&lt;/span&gt; &lt;a href="tel:'+hotline+'" class="hotlinegoi" style="display:inline-block"&gt; '+hotline+'&lt;/a&gt;       &lt;/div&gt;      &lt;/form&gt;    &lt;/div&gt;  &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;';
+
+
+jQuery("#myModalthanh").html(formdiv);		
+		
+function thanhxet(){
+
+if(submittedform) {
+	window.location="cảm ơn";
+var linkhientai=window.location;
+if(getCookie(linkhientai)){
+                	
+    }else{
+                   
+                    setCookie(linkhientai,'1',thoigianhien); 
+    }
+
+
+
+     jQuery('#myModalthanh').css('display','none');				   
+	 jQuery('.thanhfaceseo-modal-bg').css('display','none');	
+	
+	}	
+}
+
+
+ function setCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + exdays);
+                var expires = "expires="+d.toUTCString();
+                document.cookie = cname + "=" + cvalue + "; " + expires;
+            }
+             
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i=0; i&lt;ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1);
+                    if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+                }
+                return "";
+            }
+		
+function showform(){
+	var linkhientai=window.location;
+	if(getCookie(linkhientai)){
+                	
+    }else{
+                    jQuery('#myModalthanh').thanhfaceseo(jQuery('#myModalthanh').data());
+                    setCookie(linkhientai,'1',thoigianhien); 
+    }	
+}
+
+var myVar=setInterval(function () {showform()}, 1000);
+
+</pre></body></html>_application/javascript    ( F U l ~ ” š Ý Þ$Œ             
+              $¥
